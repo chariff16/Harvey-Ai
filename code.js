@@ -1,16 +1,14 @@
-// mouse movement animation
-
-let mouse = document.documentElement;
-mouse.addEventListener("mousemove", (e) => {
-  mouse.style.setProperty("--x", e.clientX + "px");
-  mouse.style.setProperty("--y", e.clientY + "px");
+// Mouse movement animation
+document.documentElement.addEventListener("mousemove", (e) => {
+  document.documentElement.style.setProperty("--x", e.clientX + "px");
+  document.documentElement.style.setProperty("--y", e.clientY + "px");
 });
 
-// button modal
-let showBtns = document.querySelectorAll(".showBtn");
-let closeBtn = document.querySelector("#closeBtn");
-let modal = document.querySelector(".modal");
-let body = document.body; // Selecting the body element
+// Button modal
+const showBtns = document.querySelectorAll(".showBtn");
+const closeBtn = document.querySelector("#closeBtn");
+const modal = document.querySelector(".modal");
+const body = document.body;
 
 // Function to disable scrolling
 function disableScroll() {
@@ -25,13 +23,13 @@ function enableScroll() {
 showBtns.forEach((showBtn) => {
   showBtn.addEventListener("click", () => {
     modal.classList.remove("none");
-    disableScroll(); // Call the function to disable scrolling when modal is open
+    disableScroll();
   });
 });
 
 closeBtn.addEventListener("click", () => {
   modal.classList.add("none");
-  enableScroll(); // Call the function to enable scrolling when modal is closed
+  enableScroll();
 });
 
 document.addEventListener("click", (e) => {
@@ -40,21 +38,19 @@ document.addEventListener("click", (e) => {
     !Array.from(showBtns).some((btn) => btn.contains(e.target))
   ) {
     modal.classList.add("none");
-    enableScroll(); // Call the function to enable scrolling when modal is closed
+    enableScroll();
   }
 });
 
-// menu animation
+// Menu animation
 document.querySelector(".menu").addEventListener("click", function () {
   this.classList.toggle("active");
 });
-// menu
-let show = document.querySelector(".menu");
-let navbar = document.querySelector(".resNavBar");
-show.addEventListener("click", () => {
-  if (navbar.style.display == "none") {
-    navbar.style.display = "block";
-  } else {
-    navbar.style.display = "none";
-  }
+
+// Toggle navbar visibility
+const showMenu = document.querySelector(".menu");
+const navbar = document.querySelector(".resNavBar");
+
+showMenu.addEventListener("click", () => {
+  navbar.style.display = navbar.style.display === "none" ? "block" : "none";
 });
